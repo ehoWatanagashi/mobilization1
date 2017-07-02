@@ -45,21 +45,18 @@ body {
 
 .main-menu > li {
     display: inline-block;
-    border-right: 1px solid #ffebee;
 }
 
-.main-menu > li:first-child {
-    border-left: 1px solid #ffebee;
-}
 
-.main-menu > li > a {
+.main-menu > li > div {
     display: block;
     padding: 15px;
     color: #fff;
     text-decoration: none;
+    cursor: pointer;
 }
 
-.main-menu > li > a:hover {
+.main-menu > li > div:hover {
     color: #ffebee;
 }
 
@@ -68,7 +65,7 @@ body {
 *********************/
 
 .group-block {
-    max-width: 1400px;
+    max-width: 1200px;
     display: block;
     margin: 0 auto;
     padding: 15px;
@@ -206,7 +203,7 @@ footer {
     text-align: left;
     display: block;
     margin: 0 auto;
-    max-width: 1400px;
+    max-width: 1200px;
 }
 
 .block1 {

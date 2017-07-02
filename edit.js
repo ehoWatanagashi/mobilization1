@@ -3,7 +3,8 @@ $(document).ready(function () {
     /********************************************
      * Оглавление
      * 1. Отображение вкладок
-     * 2. Всплывающие окна
+     * 2. Фильтры
+     * 3. Всплывающие окна
      *******************************************/
 
 
@@ -12,7 +13,7 @@ $(document).ready(function () {
      *********************/
 
     /*Проверяем хэш, показываем нужную вкладку. По умолчанию расписание*/
-    $(window).bind("hashchange", function () {
+/*    $(window).bind("hashchange", function () {
         ShowPage(location.hash);
     });
     if (location.hash != "") {
@@ -22,18 +23,47 @@ $(document).ready(function () {
     }
 
     
-    /* Показываем одну вкладку, скрываем другие */
+    /!* Показываем одну вкладку, скрываем другие *!/
     function ShowPage(pageName) {
         $(pageName).removeClass("none");
         link = ".main-menu a[href^=" + "\'" + pageName + "\'" + "]";
         var currentAttrValue = $(link).attr("href");
         $(".page" + currentAttrValue).fadeIn(200).siblings(".page").hide();
-        $(link).parent('li').addClass('active').siblings("li").removeClass('active');
-    }
-    
+        $(link).parent("li").addClass("active").siblings("li").removeClass("active");
+    }*/
+
+
+    /**********
+     2.ФИЛЬТРЫ
+     *********/
+
+    /*Общее расписание*/
+    $("div.refresh").click(function(){
+        /*Удаляем якорь из URL*/
+        window.location.hash = "";
+        location.reload();
+    });
+
+    /*Фильтр по школам*/
+    $("div.filter").click(function(){
+        value = $(this).text();
+        $("div.group-block").addClass("none");
+        $("div.lesson-block").addClass("none");
+
+        $("p.lesson-school").each(function() {
+            var school = $(this).text();
+            if (school.indexOf(value) != -1){
+            console.log('ура2');
+                $(this).parents(".group-block").removeClass("none");
+                $(this).closest(".lesson-block").removeClass("none");
+            }
+        });
+    });
+
+
 
     /******************
-     2.ВСПЛЫВАЮЩИЕ ОКНА
+     3.ВСПЛЫВАЮЩИЕ ОКНА
      ******************/
 
     /*Показываем окошко с информацией об учителе*/
